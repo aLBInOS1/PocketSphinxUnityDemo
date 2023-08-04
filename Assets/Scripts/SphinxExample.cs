@@ -16,12 +16,20 @@ using UnityEngine.Networking;
  * 
  * More information on CMUSphinx / PocketSphinx can be found at -> https://cmusphinx.github.io/wiki/tutorial/
  */
+
+[System.Serializable]
+public enum language
+{
+    en_us,
+    ru_ru
+}
+
 public class SphinxExample : MonoBehaviour
 {
     private Decoder d; // Decoder that's actually interpreting our speech.
     public MicrophoneHandler mic; // Handler that manages the recording of our microphone.
     [Header("Configuration:")]
-    public string lang = "en-us"; // The language model you wish to use. (Name of your .tar file within StreamingAssets)
+    public language lang = language.en_us; // The language model you wish to use. (Name of your .tar file within StreamingAssets)
     public string keyphrase = "hello world"; // The actual keyphrase our decoder is looking to recognize. Note that this is case-sensitive.
     public KeyCode toggleRecordingKey = KeyCode.Space; // The key used to start recording our microphone.
     public int maxRecordingTime = 20; // Maximum length of the AudioClip recorded for your microphone.
@@ -77,7 +85,7 @@ public class SphinxExample : MonoBehaviour
         // Create a new configuration for our decoder.
         Config c = Decoder.DefaultConfig();
         // Find our decompressed acoustic model.
-        string speechDataPath = Path.Combine(Application.persistentDataPath, lang);
+        string speechDataPath = Path.Combine(Application.persistentDataPath, lang.ToString("g"));
         // Find our decompressed dictionary. Note: You may need to change the dictionary name if you create a custom dictionary.
         string dictPath = Path.Combine(speechDataPath, "dictionary");
         // Creates a path to store log files.
@@ -127,7 +135,7 @@ public class SphinxExample : MonoBehaviour
         // Create a new configuration for our decoder.
         Config c = Decoder.DefaultConfig();
         // Find our decompressed acoustic model.
-        string speechDataPath = Path.Combine(Application.persistentDataPath, lang);
+        string speechDataPath = Path.Combine(Application.persistentDataPath, lang.ToString("g"));
         // Find our decompressed dictionary. Note: You may need to change the dictionary name if you create a custom dictionary.
         string dictPath = Path.Combine(speechDataPath, "dictionary");
         // Find our decompressed language model.
