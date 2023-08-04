@@ -7,6 +7,7 @@ public class UIHandler : MonoBehaviour
     [Header("References")]
     [SerializeField] private Text mic;
     [SerializeField] private Text phrase;
+    public AudioSource audioSource;
 
     private SphinxExample sphinx;
 
@@ -36,8 +37,9 @@ public class UIHandler : MonoBehaviour
 
     private IEnumerator UpdateUIEnum(string str)
     {
-        phrase.text = $"Keyphrase recognized! \nPhrase: {str}";   
-        yield return new WaitForSeconds(5);
+        phrase.text = $"Keyphrase recognized! \nPhrase: {str}";
+        audioSource.Play();
+        yield return new WaitForSeconds(1.3f);
         phrase.text = $"Say {sphinx.keyphrase}";
     }
 }
