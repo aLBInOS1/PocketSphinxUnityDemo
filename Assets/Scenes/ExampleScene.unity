@@ -779,7 +779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lang: ru-ru
-  keyphrase: "\u0432\u043F\u0435\u0440\u0451\u0434"
+  keyphrase: "\u0441\u0442\u043E\u043F"
   toggleRecordingKey: 32
   maxRecordingTime: 20
 --- !u!114 &2109755262
